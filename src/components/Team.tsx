@@ -8,11 +8,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import sigalImg from "../assets/sigal.jpg";
+import avnerImg from "../assets/avner.jpg";
 
 interface TeamProps {
   imageUrl: string;
   name: string;
   position: string;
+  description: string;
   socialNetworks: SociaNetworkslProps[];
 }
 
@@ -23,71 +26,28 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://i.pravatar.cc/150?img=35",
-    name: "Emma Smith",
-    position: "Product Manager",
+    imageUrl: sigalImg,
+    name: "Sigal Malki",
+    position: "Co-Founder and CEO",
+    description:
+      "Product leader with 10+ years turning real user pain into products people actually use.",
     socialNetworks: [
       {
         name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
+        url: "https://www.linkedin.com/in/sigal-mendel-malki-156062152/",
       },
     ],
   },
   {
-    imageUrl: "https://i.pravatar.cc/150?img=60",
-    name: "John Doe",
-    position: "Tech Lead",
+    imageUrl: avnerImg,
+    name: "Avner Freiberger",
+    position: "Co-Founder and CTO",
+    description:
+      "Data & AI leader focused on extracting real signal from messy, real-world data.",
     socialNetworks: [
       {
         name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=36",
-    name: "Ashley Ross",
-    position: "Frontend Developer",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/",
-      },
-    ],
-  },
-  {
-    imageUrl: "https://i.pravatar.cc/150?img=17",
-    name: "Bruce Rogers",
-    position: "Backend Developer",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/leopoldo-miranda/",
-      },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/",
+        url: "https://www.linkedin.com/in/avnerfreiberger/",
       },
     ],
   },
@@ -110,23 +70,23 @@ export const Team = () => {
   return (
     <section
       id="team"
-      className="container py-24 sm:py-32"
+      className="container py-24 sm:py-32 bg-[hsl(var(--section-bg-5))]"
     >
       <h2 className="text-3xl md:text-4xl font-bold">
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Our Dedicated{" "}
+        Built by people who’ve lived the problem{" "}
         </span>
-        Crew
+        
       </h2>
 
       <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+      Product and data leaders obsessed with turning real-world pain into real signals.
+      
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-10 max-w-4xl mx-auto">
         {teamList.map(
-          ({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+          ({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
             <Card
               key={name}
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
@@ -144,7 +104,7 @@ export const Team = () => {
               </CardHeader>
 
               <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>{description}</p>
               </CardContent>
 
               <CardFooter>

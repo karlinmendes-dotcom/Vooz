@@ -2,6 +2,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* HeroCards background shadow */
 .shadow {
   position: absolute;
@@ -64,3 +73,38 @@ html {
     }
   }
 }
+
+/* HowItWorks icon animations — single-play */
+@keyframes hiw-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes hiw-wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-16deg); }
+  75% { transform: rotate(16deg); }
+}
+
+@keyframes hiw-pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+@keyframes hiw-spin-once {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes hiw-icon-pop {
+  0%   { transform: scale(1) rotate(0deg); }
+  30%  { transform: scale(1.35) rotate(-12deg); }
+  65%  { transform: scale(1.15) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.hiw-icon-float  { animation: hiw-float        1.6s ease-in-out; }
+.hiw-icon-wobble { animation: hiw-wobble        1.4s ease-in-out; }
+.hiw-icon-pulse  { animation: hiw-pulse-scale   1.2s ease-in-out; }
+.hiw-icon-spin   { animation: hiw-spin-once     1.8s linear; }
+.hiw-icon-pop    { animation: hiw-icon-pop      0.5s ease-out; }

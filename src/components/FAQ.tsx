@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -7,39 +8,42 @@ import {
 
 interface FAQProps {
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
   value: string;
 }
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
-    value: "item-1",
+    question: "Is this another AI copy tool?",
+    answer: "No. Ansora doesn’t invent. It translates reality. It works only with what practitioners already say when work breaks.",    value: "item-1",
   },
   {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-2",
+    question: "Where does the data come from?",    answer:
+    "From real environments: technical forums, blogs, podacasts and YouTube channels.",  value: "item-2",
   },
   {
     question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
+    "What makes this different from “customer research”?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
-    value: "item-3",
+    "Research asks questions. Ansora listens to what people say when no one is asking.",    value: "item-3",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question:
+      "Can I use this on existing copy?",
+    answer:
+      "Yes. Drop any text in and see, line by line, where it aligns with the market, and where it drifts.",
     value: "item-4",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+    question: "How do we get started with Ansora?",
+    answer: (
+      <>
+        <Link to="/book-a-demo" className="text-primary font-medium underline underline-offset-4 hover:no-underline">
+          Book a short demo
+        </Link>{" "}
+        to align on your market and audience. Onboarding takes minutes. You then get a full month to explore Ansora hands-on, free. By the end of the month, it’s very clear whether Ansora reflects your market’s reality or not.
+      </>
+    ),
     value: "item-5",
   },
 ];
@@ -48,7 +52,7 @@ export const FAQ = () => {
   return (
     <section
       id="faq"
-      className="container py-24 sm:py-32"
+      className="container py-24 sm:py-32 bg-[hsl(var(--section-bg-6))]"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
         Frequently Asked{" "}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,11 +13,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
 
 interface RouteProps {
   href: string;
@@ -29,12 +28,8 @@ const routeList: RouteProps[] = [
     label: "Features",
   },
   {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#pricing",
-    label: "Pricing",
+    href: "#howitworks",
+    label: "How It Works",
   },
   {
     href: "#faq",
@@ -44,19 +39,43 @@ const routeList: RouteProps[] = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="font-navbar sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
-            <a
-              rel="noreferrer noopener"
-              href="/"
-              className="ml-2 font-bold text-xl flex"
-            >
-              <LogoIcon />
-              ShadcnUI/React
-            </a>
+            {isHome ? (
+              <a
+                href="#hero"
+                className="ml-2 font-bold text-xl flex items-center gap-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              >
+                <img
+                  src="/logo_no_background.png"
+                  alt="Ansora"
+                  className="h-8 w-8"
+                />
+                Ansora
+              </a>
+            ) : (
+              <Link
+                to="/"
+                className="ml-2 font-bold text-xl flex items-center gap-2"
+              >
+                <img
+                  src="/logo_no_background.png"
+                  alt="Ansora"
+                  className="h-8 w-8"
+                />
+                Ansora
+              </Link>
+            )}
           </NavigationMenuItem>
 
           {/* mobile */}
@@ -79,7 +98,7 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    Ansora
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
@@ -89,21 +108,26 @@ export const Navbar = () => {
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
+                      className={`text-lg ${buttonVariants({ variant: "ghost" })}`}
                     >
                       {label}
                     </a>
                   ))}
+                  <Link
+                    to="/book-a-demo"
+                    onClick={() => setIsOpen(false)}
+                    className={`text-lg w-full justify-center ${buttonVariants({ variant: "outline" })}`}
+                  >
+                    Book a Demo
+                  </Link>
                   <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    href="https://app.ansora.io"
                     target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-lg w-full justify-center ${buttonVariants({ variant: "default" })}`}
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    Login
                   </a>
                 </nav>
               </SheetContent>
@@ -117,7 +141,7 @@ export const Navbar = () => {
                 rel="noreferrer noopener"
                 href={route.href}
                 key={i}
-                className={`text-[17px] ${buttonVariants({
+                className={`text-xl ${buttonVariants({
                   variant: "ghost",
                 })}`}
               >
@@ -126,17 +150,21 @@ export const Navbar = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex gap-2">
+          <div className="hidden md:flex gap-2 items-center">
+            <Link
+              to="/book-a-demo"
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Book a Demo
+            </Link>
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+              href="https://app.ansora.io"
               target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
+              className={buttonVariants({ variant: "default" })}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              Login
             </a>
-
             <ModeToggle />
           </div>
         </NavigationMenuList>
