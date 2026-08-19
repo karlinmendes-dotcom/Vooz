@@ -10,27 +10,27 @@ interface FeatureProps {
 const features: FeatureProps[] = [
   {
     icon: <MedalIcon />,
-    title: "Accessibility",
+    title: "Entre em contato",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Fale conosco pelo WhatsApp ou formulário. Entendemos seu negócio e mostramos como funciona.",
   },
   {
     icon: <MapIcon />,
-    title: "Community",
+    title: "Personalizamos para você",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Criamos sua página profissional com a identidade do seu negócio. Serviços, horários e configurações prontos.",
   },
   {
     icon: <PlaneIcon />,
-    title: "Scalability",
+    title: "Seus clientes agendam",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Compartilhe o link e seus clientes começam a agendarem pelo celular. Simples e rápido.",
   },
   {
     icon: <GiftIcon />,
-    title: "Gamification",
+    title: "Você gerencia tudo",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Acompanhe agendamentos, clientes e resultados em um painel fácil. Suporte sempre disponível.",
   },
 ];
 
@@ -40,16 +40,15 @@ export const HowItWorks = () => {
       id="howItWorks"
       className="container text-center py-24 sm:py-32"
     >
-      <h2 className="text-3xl md:text-4xl font-bold ">
-        How It{" "}
+      <h2 className="text-3xl md:text-4xl font-bold">
+        Como{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Works{" "}
+          Funciona{" "}
         </span>
-        Step-by-Step Guide
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Em 4 passos simples você está pronto para receber agendamentos
+        profissionais.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

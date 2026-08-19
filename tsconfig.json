@@ -24,7 +24,7 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  },
-  "include": ["src"],
+  },    "include": ["src"],
+    "exclude": ["src/convex"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

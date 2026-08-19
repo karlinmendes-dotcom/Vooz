@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -17,57 +16,100 @@ enum PopularPlanType {
 
 interface PricingProps {
   title: string;
+  subtitle: string;
   popular: PopularPlanType;
-  price: number;
+  monthlyPrice: number;
+  implementationPrice: number;
   description: string;
+  idealFor: string;
   buttonText: string;
   benefitList: string[];
 }
 
 const pricingList: PricingProps[] = [
   {
-    title: "Free",
+    title: "Essencial",
+    subtitle: "PLANO 1",
     popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get Started",
+    monthlyPrice: 97,
+    implementationPrice: 447,
+    description: "Perfeito para profissionais e pequenos negócios que querem sair do agendamento manual e começar a organizar seus atendimentos de forma profissional.",
+    idealFor: "Profissionais e pequenos negócios que querem organizar seus atendimentos",
+    buttonText: "Contratar Essencial",
     benefitList: [
-      "1 Team member",
-      "2 GB Storage",
-      "Upto 4 pages",
-      "Community support",
-      "lorem ipsum dolor",
+      "Sistema de agendamento online",
+      "Página profissional de agendamento",
+      "Cadastro de serviços",
+      "Cadastro de horários de atendimento",
+      "Configuração dos dias de funcionamento",
+      "Bloqueio de horários indisponíveis",
+      "Cadastro e gerenciamento de clientes",
+      "Painel administrativo básico",
+      "Visualização dos agendamentos",
+      "Configuração das informações do negócio",
+      "Personalização básica da identidade visual",
+      "Responsividade para celular",
+      "Manutenção técnica",
+      "Hospedagem/infraestrutura",
+      "Suporte básico",
+    ],
+  },
+  {
+    title: "Profissional",
+    subtitle: "PLANO 2",
+    popular: 1,
+    monthlyPrice: 147,
+    implementationPrice: 747,
+    description: "Para negócios que querem além de organizar os agendamentos, melhorar o relacionamento com seus clientes e automatizar parte da operação.",
+    idealFor: "Negócios que querem melhorar o relacionamento com clientes e automatizar",
+    buttonText: "Contratar Profissional",
+    benefitList: [
+      "Tudo do Plano Essencial",
+      "CRM de clientes",
+      "Histórico de clientes",
+      "Organização do relacionamento com clientes",
+      "Status dos clientes",
+      "Automação de confirmações",
+      "Lembretes de agendamento",
+      "Gestão mais completa da agenda",
+      "Regras personalizadas do estabelecimento",
+      "Página profissional mais completa",
+      "Personalização visual avançada",
+      "Recursos para retenção e retorno de clientes",
+      "Relatórios básicos",
+      "Recursos adicionais de gestão",
+      "Suporte prioritário",
+      "Manutenção e atualizações",
     ],
   },
   {
     title: "Premium",
-    popular: 1,
-    price: 5,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
-    benefitList: [
-      "4 Team member",
-      "4 GB Storage",
-      "Upto 6 pages",
-      "Priority support",
-      "lorem ipsum dolor",
-    ],
-  },
-  {
-    title: "Enterprise",
+    subtitle: "PLANO 3",
     popular: 0,
-    price: 40,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
+    monthlyPrice: 197,
+    implementationPrice: 997,
+    description: "Para negócios que querem uma solução digital completa, com automação, inteligência e maior controle da operação.",
+    idealFor: "Negócios que querem solução completa com IA e automação avançada",
+    buttonText: "Contratar Premium",
     benefitList: [
-      "10 Team member",
-      "8 GB Storage",
-      "Upto 10 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+      "Tudo do Plano Profissional",
+      "Sistema completo de agendamento",
+      "CRM completo",
+      "Histórico e relacionamento com clientes",
+      "Automações avançadas",
+      "Recursos inteligentes de atendimento",
+      "Assistente de IA configurado para o negócio",
+      "IA baseada nas informações e regras do negócio",
+      "Automação de comunicação",
+      "Recursos avançados de retenção de clientes",
+      "Relatórios e indicadores",
+      "Painel administrativo avançado",
+      "Personalização avançada da plataforma",
+      "Configurações específicas para o negócio",
+      "Integrações disponíveis conforme a estrutura",
+      "Suporte prioritário",
+      "Manutenção contínua",
+      "Atualizações da plataforma",
     ],
   },
 ];
@@ -78,69 +120,117 @@ export const Pricing = () => {
       id="pricing"
       className="container py-24 sm:py-32"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Get
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          {" "}
-          Unlimited{" "}
-        </span>
-        Access
-      </h2>
-      <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        reiciendis.
-      </h3>
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          Escolha o{" "}
+          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+            Plano Ideal
+          </span>
+        </h2>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Escolha a solução ideal para transformar seu atendimento em uma experiência mais profissional, organizada e inteligente.
+        </p>
+      </div>
+
+      {/* Pricing Cards */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pricingList.map((pricing: PricingProps) => (
           <Card
             key={pricing.title}
-            className={
+            className={`relative flex flex-col ${
               pricing.popular === PopularPlanType.YES
-                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10"
+                ? "border-primary shadow-xl shadow-primary/10 scale-[1.02]"
                 : ""
-            }
+            }`}
           >
-            <CardHeader>
-              <CardTitle className="flex item-center justify-between">
-                {pricing.title}
-                {pricing.popular === PopularPlanType.YES ? (
-                  <Badge
-                    variant="secondary"
-                    className="text-sm text-primary"
-                  >
-                    Most popular
-                  </Badge>
-                ) : null}
-              </CardTitle>
-              <div>
-                <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
+            {/* Popular Badge */}
+            {pricing.popular === PopularPlanType.YES && (
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <Badge className="bg-primary text-primary-foreground px-4 py-1">
+                  Mais escolhido
+                </Badge>
+              </div>
+            )}
+
+            <CardHeader className="text-center pt-8">
+              <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+                {pricing.subtitle}
+              </p>
+              <CardTitle className="text-2xl mt-2">{pricing.title}</CardTitle>
+
+              {/* Monthly Price */}
+              <div className="mt-4">
+                <span className="text-4xl font-bold">R${pricing.monthlyPrice}</span>
+                <span className="text-muted-foreground">/mês</span>
               </div>
 
-              <CardDescription>{pricing.description}</CardDescription>
+              {/* Implementation Price */}
+              <div className="mt-2 text-sm">
+                <span className="text-muted-foreground">Implementação: </span>
+                <span className="font-semibold">R${pricing.implementationPrice}</span>
+                <span className="text-muted-foreground"> (pagamento único)</span>
+              </div>
+
+              <p className="text-sm text-muted-foreground mt-4 text-left">
+                {pricing.description}
+              </p>
             </CardHeader>
 
-            <CardContent>
-              <Button className="w-full">{pricing.buttonText}</Button>
+            <CardContent className="flex-1">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+                Ideal para:
+              </p>
+              <p className="text-sm text-muted-foreground mb-6">
+                {pricing.idealFor}
+              </p>
+
+              <Button
+                className={`w-full ${
+                  pricing.popular === PopularPlanType.YES
+                    ? ""
+                    : "variant-outline"
+                }`}
+                variant={pricing.popular === PopularPlanType.YES ? "default" : "outline"}
+              >
+                {pricing.buttonText}
+              </Button>
             </CardContent>
 
-            <hr className="w-4/5 m-auto mb-4" />
+            <hr className="w-4/5 mx-auto mb-4" />
 
-            <CardFooter className="flex">
-              <div className="space-y-4">
+            <CardFooter className="flex flex-col items-start">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+                O que está incluído:
+              </p>
+              <div className="space-y-3 w-full">
                 {pricing.benefitList.map((benefit: string) => (
                   <span
                     key={benefit}
-                    className="flex"
+                    className="flex items-start text-sm"
                   >
-                    <Check className="text-green-500" />{" "}
-                    <h3 className="ml-2">{benefit}</h3>
+                    <Check className="text-green-500 h-4 w-4 mt-0.5 flex-shrink-0" />
+                    <span className="ml-2">{benefit}</span>
                   </span>
                 ))}
               </div>
             </CardFooter>
           </Card>
         ))}
+      </div>
+
+      {/* Bottom Note */}
+      <div className="text-center mt-12 space-y-2">
+        <p className="text-sm text-muted-foreground">
+          <strong>Implementação</strong> = pagamento único &nbsp;|&nbsp;
+          <strong>Mensalidade</strong> = pagamento recorrente
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Todos os planos incluem hospedagem, manutenção e suporte.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Integrações e recursos de terceiros sujeitos à disponibilidade e configuração.
+        </p>
       </div>
     </section>
   );

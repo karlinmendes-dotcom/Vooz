@@ -2,23 +2,27 @@ export const LogoIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="lucide lucide-panels-top-left mr-2 w-6 h-6"
+      viewBox="0 0 40 40"
+      className="mr-2 w-8 h-8"
     >
-      <rect
-        width="18"
-        height="18"
-        x="3"
-        y="3"
-        rx="2"
-      />
-      <path d="M3 9h18" />
-      <path d="M9 21V9" />
+      <defs>
+        <linearGradient id="vooz-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#6366f1" />
+          <stop offset="100%" stopColor="#8b5cf6" />
+        </linearGradient>
+      </defs>
+      <circle cx="20" cy="20" r="18" fill="url(#vooz-gradient)" />
+      <text
+        x="20"
+        y="26"
+        textAnchor="middle"
+        fill="white"
+        fontSize="16"
+        fontWeight="bold"
+        fontFamily="system-ui, sans-serif"
+      >
+        V
+      </text>
     </svg>
   );
 };

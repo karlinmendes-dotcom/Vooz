@@ -10,21 +10,21 @@ interface ServiceProps {
 
 const serviceList: ServiceProps[] = [
   {
-    title: "Code Collaboration",
+    title: "Agendamento Profissional",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Seus clientes acessam sua página e escolhem o melhor horário. Tudo automatico, sem filas, sem mensagens perdidas.",
     icon: <ChartIcon />,
   },
   {
-    title: "Project Management",
+    title: "Gestão Completa",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Controle entradas, saídas, comissões e relatórios. Saiba exatamente quanto seu negócio fatura por dia, semana e mês.",
     icon: <WalletIcon />,
   },
   {
-    title: "Task Automation",
+    title: "CRM Inteligente",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Conheça cada cliente pelo nome. Saiba o que ele gosta, quando veio pela última vez e quanto gastou. Retenha mais clientes.",
     icon: <MagnifierIcon />,
   },
 ];
@@ -36,14 +36,15 @@ export const Services = () => {
         <div>
           <h2 className="text-3xl md:text-4xl font-bold">
             <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-              Client-Centric{" "}
+              Feito para seu{" "}
             </span>
-            Services
+            Negócio
           </h2>
 
-          <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-            dolor.
+          <p className="text-muted-foreground text-xl mt-4 mb-8">
+            Soluções personalizadas para barbearias, salões de beleza, clínicas
+            de estética, studios e qualquer profissional que trabalha com
+            agendamento.
           </p>
 
           <div className="flex flex-col gap-8">
@@ -68,7 +69,7 @@ export const Services = () => {
         <img
           src={cubeLeg}
           className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="About services"
+          alt="Soluções Vooz"
         />
       </div>
     </section>

@@ -13,34 +13,46 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
+    question: "O Vooz é para o meu negócio?",
+    answer:
+      "Sim! O Vooz foi feito para barbearias, salões de beleza, clínicas de estética, studios, nail designers, lash designers, tatuadores e qualquer profissional que trabalha com agendamento.",
     value: "item-1",
   },
   {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
+    question: "Preciso saber programar para usar?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "Não! O Vooz é feito para donos de negócio, não para programadores. Você configura tudo pelo painel de forma simples, ou nós configuramos para você.",
     value: "item-2",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
+    question: "Como meus clientes vão agendar?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
+      "Você recebe um link personalizado. Seus clientes acessam pelo celular e escolhem o melhor horário. Simples como reservar uma mesa no restaurante.",
     value: "item-3",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "O que está incluído na implementação?",
+    answer:
+      "Nós criamos sua página profissional, configuramos seus serviços, horários, dias de funcionamento e personalizamos tudo com a identidade do seu negócio.",
     value: "item-4",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
+    question: "Posso cancelar quando quiser?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "Sim! Cancele a qualquer momento sem multa ou taxa. Seus dados ficam disponíveis por 30 dias após o cancelamento.",
     value: "item-5",
+  },
+  {
+    question: "Tem aplicativo para celular?",
+    answer:
+      "Sim! O Vooz funciona como um app no celular. Seus clientes acessam pelo navegador e instalam como um app. Você também gerencia tudo pelo celular.",
+    value: "item-6",
+  },
+  {
+    question: "Como funciona o suporte?",
+    answer:
+      "Oferecemos suporte humanizado por WhatsApp e chat. Planos Profissional e Premium têm suporte prioritário com atendimento mais rápido.",
+    value: "item-7",
   },
 ];
 
@@ -51,9 +63,9 @@ export const FAQ = () => {
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Frequently Asked{" "}
+        Perguntas{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Questions
+          Frequentes
         </span>
       </h2>
 
@@ -77,13 +89,13 @@ export const FAQ = () => {
       </Accordion>
 
       <h3 className="font-medium mt-4">
-        Still have questions?{" "}
+        Ainda tem dúvidas?{" "}
         <a
           rel="noreferrer noopener"
-          href="#"
+          href="https://wa.me/5511999999999"
           className="text-primary transition-all border-primary hover:border-b-2"
         >
-          Contact us
+          Fale conosco no WhatsApp
         </a>
       </h3>
     </section>

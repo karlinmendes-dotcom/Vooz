@@ -18,35 +18,35 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    title: "Responsive Design",
+    title: "Agendamento Online",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Seus clientes agendam horários pelo celular a qualquer hora, sem precisar ligar ou enviar mensagem. Reduza faltas com lembretes automáticos.",
     image: image4,
   },
   {
-    title: "Intuitive user interface",
+    title: "Clientes Organizados",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Tenha o histórico completo de cada cliente: preferências, visitas anteriores e informações importantes. Nunca mais perca um cliente por falta de organização.",
     image: image3,
   },
   {
-    title: "AI-Powered insights",
+    title: "Gestão Inteligente",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Saiba exatamente quanto fatura, quais são seus horários mais movimentados e como melhorar seus resultados com relatórios simples.",
     image: image,
   },
 ];
 
 const featureList: string[] = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  "Agendamento online",
+  "Lembretes automáticos",
+  "Gestão de clientes",
+  "Controle financeiro",
+  "Comissões automáticas",
+  "Relatórios simples",
+  "App para celular",
+  "Suporte humanizado",
+  "Identidade visual",
 ];
 
 export const Features = () => {
@@ -56,11 +56,16 @@ export const Features = () => {
       className="container py-24 sm:py-32 space-y-8"
     >
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Many{" "}
+        Tudo que seu{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Great Features
+          Negócio Precisa
         </span>
       </h2>
+
+      <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+        Chega de agendamentos pelo WhatsApp, horários desorganizados e clientes
+        esquecendo compromissos. Uma solução completa para seu negócio crescer.
+      </p>
 
       <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature: string) => (
@@ -87,7 +92,7 @@ export const Features = () => {
             <CardFooter>
               <img
                 src={image}
-                alt="About feature"
+                alt={title}
                 className="w-[200px] lg:w-[300px] mx-auto"
               />
             </CardFooter>

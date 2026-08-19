@@ -10,141 +10,138 @@ export const Footer = () => {
           <a
             rel="noreferrer noopener"
             href="/"
-            className="font-bold text-xl flex"
+            className="font-bold text-xl flex items-center"
           >
             <LogoIcon />
-            ShadcnUI/React
+            <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text">
+              Vooz
+            </span>
           </a>
+          <p className="text-muted-foreground mt-4">
+            Soluções digitais para negócios que trabalham com agendamento.
+          </p>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Follow US</h3>
+          <h3 className="font-bold text-lg">Produto</h3>
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="/#features"
               className="opacity-60 hover:opacity-100"
             >
-              Github
+              Funcionalidades
             </a>
           </div>
-
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="/#pricing"
               className="opacity-60 hover:opacity-100"
             >
-              Twitter
+              Planos e Preços
             </a>
           </div>
-
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="/#howItWorks"
               className="opacity-60 hover:opacity-100"
             >
-              Dribbble
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Platforms</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Web
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Mobile
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Desktop
+              Como Funciona
             </a>
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">About</h3>
+          <h3 className="font-bold text-lg">Para quem?</h3>
           <div>
             <a
               rel="noreferrer noopener"
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Features
+              Barbearias
             </a>
           </div>
-
           <div>
             <a
               rel="noreferrer noopener"
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Pricing
+              Salões de Beleza
             </a>
           </div>
-
           <div>
             <a
               rel="noreferrer noopener"
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              FAQ
+              Clínicas de Estética
+            </a>
+          </div>
+          <div>
+            <a
+              rel="noreferrer noopener"
+              href="#"
+              className="opacity-60 hover:opacity-100"
+            >
+              Studios
             </a>
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
+          <h3 className="font-bold text-lg">Suporte</h3>
           <div>
             <a
               rel="noreferrer noopener"
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Youtube
+              Central de Ajuda
             </a>
           </div>
-
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="https://wa.me/5511999999999"
               className="opacity-60 hover:opacity-100"
             >
-              Discord
+              WhatsApp
             </a>
           </div>
-
           <div>
             <a
               rel="noreferrer noopener"
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Twitch
+              Contato
+            </a>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-lg">Redes Sociais</h3>
+          <div>
+            <a
+              rel="noreferrer noopener"
+              href="#"
+              className="opacity-60 hover:opacity-100"
+            >
+              Instagram
+            </a>
+          </div>
+          <div>
+            <a
+              rel="noreferrer noopener"
+              href="#"
+              className="opacity-60 hover:opacity-100"
+            >
+              LinkedIn
             </a>
           </div>
         </div>
@@ -152,15 +149,11 @@ export const Footer = () => {
 
       <section className="container pb-14 text-center">
         <h3>
-          &copy; 2024 Landing page made by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://www.linkedin.com/in/leopoldo-miranda/"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            Leo Miranda
-          </a>
+          &copy; 2024{" "}
+          <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text font-bold">
+            Vooz
+          </span>
+          . Todos os direitos reservados.
         </h3>
       </section>
     </footer>

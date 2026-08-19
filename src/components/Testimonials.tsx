@@ -17,45 +17,45 @@ interface TestimonialProps {
 const testimonials: TestimonialProps[] = [
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe",
-    comment: "This landing page is awesome!",
+    name: "Carlos Silva",
+    userName: "Barbearia do Zé — São Paulo",
+    comment:
+      "Reduziu 70% das faltas com os lembretes automáticos. Meus clientes elogiam a facilidade de agendar pelo celular.",
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe1",
+    name: "Ana Souza",
+    userName: "Studio Belle — Rio de Janeiro",
     comment:
-      "Lorem ipsum dolor sit amet,empor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-
-  {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe2",
-    comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+      "Agora sei exatamente o que cada cliente gosta e quando veio da última vez. Isso faz toda a diferença no atendimento.",
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe3",
+    name: "Pedro Santos",
+    userName: "Barber Shop Premium — Minas Gerais",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "O painel financeiro me mostra exatamente quanto cada barbeiro gerou no mês. Controle total sem complicação.",
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe4",
+    name: "Maria Oliveira",
+    userName: "Clínica Wellness — Bahia",
     comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud.",
+      "Meus pacientes adoram agendar pelo app. Prático, rápido e sem filas. Profissionalizou totalmente meu atendimento.",
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe React",
-    userName: "@john_Doe5",
+    name: "Lucas Ferreira",
+    userName: "Pet Love — Paraná",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Transformou a gestão do meu pet shop. Agendamentos e pagamentos no mesmo lugar, tudo organizado.",
+  },
+  {
+    image: "https://github.com/shadcn.png",
+    name: "Fernanda Costa",
+    userName: "Nail Art Studio — Pernambuco",
+    comment:
+      "Super fácil de usar. Meus clientes elogiam a praticidade. Parece que o sistema foi feito especialmente pra mim.",
   },
 ];
 
@@ -66,17 +66,15 @@ export const Testimonials = () => {
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold">
-        Discover Why
+        O que nossos{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          {" "}
-          People Love{" "}
+          clientes{" "}
         </span>
-        This Landing Page
+        dizem
       </h2>
 
       <p className="text-xl text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non unde error
-        facere hic reiciendis illo
+        Mais de 500 negócios já transformaram sua gestão com o Vooz.
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:block columns-2  lg:columns-3 lg:gap-6 mx-auto space-y-4 lg:space-y-6">
