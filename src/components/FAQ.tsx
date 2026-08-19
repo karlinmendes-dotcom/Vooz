@@ -51,7 +51,7 @@ const FAQList: FAQProps[] = [
   {
     question: "Como funciona o suporte?",
     answer:
-      "Oferecemos suporte humanizado por WhatsApp e chat. Planos Profissional e Premium têm suporte prioritário com atendimento mais rápido.",
+      "Oferecemos suporte humanizado. No plano Essencial o suporte é por email. Nos planos Profissional e Premium, você fala direto com a gente pelo WhatsApp.",
     value: "item-7",
   },
 ];
@@ -62,7 +62,7 @@ export const FAQ = () => {
       id="faq"
       className="container py-24 sm:py-32"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
         Perguntas{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Frequentes
@@ -87,17 +87,6 @@ export const FAQ = () => {
           </AccordionItem>
         ))}
       </Accordion>
-
-      <h3 className="font-medium mt-4">
-        Ainda tem dúvidas?{" "}
-        <a
-          rel="noreferrer noopener"
-          href="https://wa.me/5511999999999"
-          className="text-primary transition-all border-primary hover:border-b-2"
-        >
-          Fale conosco no WhatsApp
-        </a>
-      </h3>
     </section>
   );
 };

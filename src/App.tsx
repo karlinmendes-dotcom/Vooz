@@ -9,12 +9,10 @@ import { HowItWorks } from "./components/HowItWorks";
 import { Navbar } from "./components/Navbar";
 import { Newsletter } from "./components/Newsletter";
 import { Pricing } from "./components/Pricing";
-import { ScrollToTop } from "./components/ScrollToTop";
-import { WhatsAppButton } from "./components/WhatsAppButton";
 import { Services } from "./components/Services";
-
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import "./App.css";
 
 function LandingPage() {
@@ -33,7 +31,6 @@ function LandingPage() {
       <Newsletter />
       <FAQ />
       <Footer />
-      <ScrollToTop />
       <WhatsAppButton />
     </>
   );
@@ -41,9 +38,9 @@ function LandingPage() {
 
 function PaymentSuccess() {
   return (
-    <div className="container py-20 text-center">
-      <h1 className="text-4xl font-bold mb-4">Pagamento Aprovado! ✅</h1>
-      <p className="text-xl text-muted-foreground mb-8">
+    <div className="container py-20 text-center px-4">
+      <h1 className="text-3xl md:text-4xl font-bold mb-4">Pagamento Aprovado! ✅</h1>
+      <p className="text-lg md:text-xl text-muted-foreground mb-8">
         Seu pagamento foi processado com sucesso.
       </p>
       <a href="/" className="text-primary underline">
@@ -55,9 +52,9 @@ function PaymentSuccess() {
 
 function PaymentFailure() {
   return (
-    <div className="container py-20 text-center">
-      <h1 className="text-4xl font-bold mb-4">Pagamento Não Aprovado ❌</h1>
-      <p className="text-xl text-muted-foreground mb-8">
+    <div className="container py-20 text-center px-4">
+      <h1 className="text-3xl md:text-4xl font-bold mb-4">Pagamento Não Aprovado ❌</h1>
+      <p className="text-lg md:text-xl text-muted-foreground mb-8">
         Houve um problema com seu pagamento. Por favor, tente novamente.
       </p>
       <a href="/" className="text-primary underline">
@@ -69,9 +66,9 @@ function PaymentFailure() {
 
 function PaymentPending() {
   return (
-    <div className="container py-20 text-center">
-      <h1 className="text-4xl font-bold mb-4">Pagamento Pendente ⏳</h1>
-      <p className="text-xl text-muted-foreground mb-8">
+    <div className="container py-20 text-center px-4">
+      <h1 className="text-3xl md:text-4xl font-bold mb-4">Pagamento Pendente ⏳</h1>
+      <p className="text-lg md:text-xl text-muted-foreground mb-8">
         Seu pagamento está sendo processado. Você receberá uma confirmação em breve.
       </p>
       <a href="/" className="text-primary underline">

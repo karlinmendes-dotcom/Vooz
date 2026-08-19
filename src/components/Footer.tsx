@@ -5,8 +5,8 @@ export const Footer = () => {
     <footer id="footer">
       <hr className="w-11/12 mx-auto" />
 
-      <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
-        <div className="col-span-full xl:col-span-2">
+      <section className="container py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-4">
+        <div className="sm:col-span-2 md:col-span-1">
           <a
             rel="noreferrer noopener"
             href="/"
@@ -17,79 +17,26 @@ export const Footer = () => {
               Vooz
             </span>
           </a>
-          <p className="text-muted-foreground mt-4 max-w-xs">
+          <p className="text-muted-foreground mt-4 max-w-xs text-sm">
             Soluções digitais para negócios que trabalham com agendamento.
-            Chega de perder clientes por falta de organização.
           </p>
         </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Produto</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="/#features"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="/#features" className="opacity-60 hover:opacity-100 text-sm">
               Funcionalidades
             </a>
           </div>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="/#pricing"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="/#pricing" className="opacity-60 hover:opacity-100 text-sm">
               Planos e Preços
             </a>
           </div>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="/#howItWorks"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="/#howItWorks" className="opacity-60 hover:opacity-100 text-sm">
               Como Funciona
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Para quem?</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Barbearias
-            </a>
-          </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Salões de Beleza
-            </a>
-          </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Clínicas de Estética
-            </a>
-          </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Studios
             </a>
           </div>
         </div>
@@ -97,29 +44,17 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Suporte</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="https://wa.me/5527998041197" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 text-sm">
+              Chame no WhatsApp
+            </a>
+          </div>
+          <div>
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
               Central de Ajuda
             </a>
           </div>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="https://wa.me/5511999999999"
-              className="opacity-60 hover:opacity-100"
-            >
-              WhatsApp
-            </a>
-          </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
               Contato
             </a>
           </div>
@@ -128,28 +63,35 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Redes Sociais</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
               Instagram
             </a>
           </div>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              LinkedIn
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
+              YouTube
+            </a>
+          </div>
+          <div>
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
+              TikTok
+            </a>
+          </div>
+          <div>
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
+              Facebook
+            </a>
+          </div>
+          <div>
+            <a href="#" className="opacity-60 hover:opacity-100 text-sm">
+              Grupo Meta
             </a>
           </div>
         </div>
       </section>
 
-      <section className="container pb-14 text-center">
-        <h3>
+      <section className="container pb-14 text-center px-4">
+        <h3 className="text-sm">
           &copy; 2025{" "}
           <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text font-bold">
             Vooz

@@ -12,7 +12,7 @@ const serviceList: ServiceProps[] = [
   {
     title: "Agendamento Profissional",
     description:
-      "Seus clientes acessam sua página e escolhem o melhor horário. Tudo automatico, sem filas, sem mensagens perdidas.",
+      "Seus clientes acessam sua página e escolhem o melhor horário. Tudo automático, sem filas, sem mensagens perdidas.",
     icon: <ChartIcon />,
   },
   {
@@ -41,7 +41,7 @@ export const Services = () => {
             Negócio
           </h2>
 
-          <p className="text-muted-foreground text-xl mt-4 mb-8">
+          <p className="text-muted-foreground text-lg sm:text-xl mt-4 mb-8">
             Soluções personalizadas para barbearias, salões de beleza, clínicas
             de estética, studios e qualquer profissional que trabalha com
             agendamento.
@@ -51,7 +51,7 @@ export const Services = () => {
             {serviceList.map(({ icon, title, description }: ServiceProps) => (
               <Card key={title}>
                 <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
+                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl flex-shrink-0">
                     {icon}
                   </div>
                   <div>
@@ -68,7 +68,7 @@ export const Services = () => {
 
         <img
           src={cubeLeg}
-          className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
+          className="w-[200px] sm:w-[300px] md:w-[500px] lg:w-[600px] object-contain hidden md:block"
           alt="Soluções Vooz"
         />
       </div>
