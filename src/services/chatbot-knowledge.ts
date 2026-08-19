@@ -1,5 +1,4 @@
-// Base de conhecimento do chatbot Vooz
-// Este arquivo define tudo que o chatbot sabe sobre a empresa
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 export const CHATBOT_NAME = "Vooz";
 
@@ -14,6 +13,7 @@ REGRAS OBRIGATÓRIAS:
 5. Sempre tente guiar o cliente para contratar um plano ou falar com o time pelo WhatsApp.
 6. Não fale de tecnologia, programação, frameworks ou coisas técnicas.
 7. Fale como se estivesse conversando com o dono de um negócio local.
+8. Seja breve e direto nas respostas.
 
 SOBRE A VOZZ:
 - Somos uma empresa que ajuda pequenos negócios a organizar seus atendimentos
@@ -66,15 +66,48 @@ Posso te ajudar a entender como funciona nosso sistema de agendamento para o seu
 
 O que você gostaria de saber?`;
 
-export const FALLBACK_RESPONSE = `Desculpa, não tenho essa informação. Mas posso te ajudar com tudo sobre nossos planos e serviços.
+// Envia mensagem para a API do Groq com Llama
+export async function sendMessageToAI(userMessage: string, conversationHistory: Array<{role: string; content: string}>): Promise<string> {
+  if (!GROQ_API_KEY) {
+    return generateLocalResponse(userMessage);
+  }
 
-Quer saber nossos preços ou como funciona? Ou prefere falar direto com nossa equipe pelo WhatsApp?`;
+  try {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.1-8b-instant",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          ...conversationHistory,
+          { role: "user", content: userMessage },
+        ],
+        temperature: 0.7,
+        max_tokens: 500,
+      }),
+    });
 
-// Função para gerar resposta baseada na pergunta
-export function generateResponse(userMessage: string): string {
+    if (!response.ok) {
+      console.error("Groq API error:", response.status);
+      return generateLocalResponse(userMessage);
+    }
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content || generateLocalResponse(userMessage);
+  } catch (error) {
+    console.error("Error calling Groq API:", error);
+    return generateLocalResponse(userMessage);
+  }
+}
+
+// Resposta local (fallback quando não tem API)
+function generateLocalResponse(userMessage: string): string {
   const message = userMessage.toLowerCase();
 
-  // Saudações
   if (message.match(/^(oi|olá|ola|bom dia|boa tarde|boa noite|hello|hi)/)) {
     return `Olá! 👋 Bem-vindo à Vooz! 
 
@@ -83,7 +116,6 @@ Posso te ajudar a entender como nosso sistema de agendamento pode transformar se
 O que você gostaria de saber?`;
   }
 
-  // Preços
   if (message.includes("preço") || message.includes("preco") || message.includes("quanto") || message.includes("valor") || message.includes("plano") || message.includes("mensal")) {
     return `Temos 3 planos:
 
@@ -101,7 +133,6 @@ Todos têm 30 dias grátis no plano Essencial!
 Quer saber mais sobre algum plano específico?`;
   }
 
-  // Como funciona
   if (message.includes("como funciona") || message.includes("funciona") || message.includes("processo")) {
     return `É muito simples:
 
@@ -113,7 +144,6 @@ Quer saber mais sobre algum plano específico?`;
 Sem complicação, sem programação. A gente faz tudo para você! 🚀`;
   }
 
-  // Para quem é
   if (message.includes("para quem") || message.includes("quem") || message.includes("barbearia") || message.includes("salão") || message.includes("salo") || message.includes("clínica") || message.includes("clinica") || message.includes("studio")) {
     return `O Vooz é perfeito para:
 
@@ -130,7 +160,6 @@ Sem complicação, sem programação. A gente faz tudo para você! 🚀`;
 Seu negócio se encaixa? Me conta mais! 😊`;
   }
 
-  // WhatsApp
   if (message.includes("whatsapp") || message.includes("contato") || message.includes("falar") || message.includes("conversar")) {
     return `Claro! Você pode falar diretamente com nossa equipe:
 
@@ -139,8 +168,7 @@ Seu negócio se encaixa? Me conta mais! 😊`;
 Eles vão te ajudar com tudo que precisar! 😊`;
   }
 
-  // Cancelamento
-  if (message.includes("cancelar") || message.includes("cancela") || message.includes("triar")) {
+  if (message.includes("cancelar") || message.includes("cancela")) {
     return `Sim, pode cancelar quando quiser! 
 
 Sem multa, sem taxa. Seus dados ficam disponíveis por 30 dias após o cancelamento.
@@ -148,29 +176,27 @@ Sem multa, sem taxa. Seus dados ficam disponíveis por 30 dias após o cancelame
 Mas espero que não precise cancelar! 😊`;
   }
 
-  // Demonstração / teste grátis
   if (message.includes("teste") || message.includes("grátis") || message.includes("gratis") || message.includes("demonstração") || message.includes("demonstracao") || message.includes("testar")) {
     return `Ótimo! O plano Essencial tem 30 dias grátis!
 
 Você pode testar sem compromisso, sem cartão de crédito.
 
-Quer comece agora? Fala com a gente pelo WhatsApp: (27) 99804-1197 🚀`;
+Quer começar agora? Fala com a gente pelo WhatsApp: (27) 99804-1197 🚀`;
   }
 
-  // Obrigado
   if (message.includes("obrigad") || message.includes("valeu") || message.includes("thanks")) {
     return `De nada! 😊 Estou aqui se precisar de mais alguma coisa.
 
 Bons negócios! 🚀`;
   }
 
-  // Tchau
   if (message.includes("tchau") || message.includes("até") || message.includes("adeus")) {
     return `Tchau! 👋 Foi bom conversar com você!
 
 Qualquer coisa, é só chamar. Bons negócios! 🚀`;
   }
 
-  // Fallback
-  return FALLBACK_RESPONSE;
+  return `Desculpa, não tenho essa informação. Mas posso te ajudar com tudo sobre nossos planos e serviços.
+
+Quer saber nossos preços ou como funciona? Ou prefere falar direto com nossa equipe pelo WhatsApp?`;
 }
