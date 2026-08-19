@@ -23,11 +23,17 @@ export const About = () => {
                 a Vooz?
               </h2>
               <p className="text-xl text-muted-foreground mt-4">
-                Nascemos para simplificar a gestão de pequenos negócios.
-                Sabemos que donos de barbearias, salões e clínicas não têm
-                tempo para complicação. Por isso criamos uma plataforma
-                simples, profissional e poderosa que faz tudo funcionar
-                enquanto você foca no que faz de melhor: atender seus clientes.
+                Chegamos ao mercado com um objetivo claro: <strong>digitalizar
+                e organizar os pequenos negócios locais</strong>. Sabemos que
+                donos de barbearias, salões e clínicas não têm tempo para
+                complicação. Por isso criamos uma plataforma simples,
+                profissional e poderosa que faz tudo funcionar enquanto você
+                foca no que faz de melhor: atender seus clientes.
+              </p>
+              <p className="text-lg text-muted-foreground mt-4">
+                Nossa missão é que todo pequeno negócio tenha acesso a uma
+                solução profissional de agendamento, CRM e automação —
+                sem complicação e sem precisar entender de tecnologia.
               </p>
             </div>
 

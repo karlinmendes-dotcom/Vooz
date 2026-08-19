@@ -7,7 +7,7 @@ export const Statistics = () => {
   const stats: statsProps[] = [
     {
       quantity: "500+",
-      description: "Negócios",
+      description: "Negócios atendidos",
     },
     {
       quantity: "15K+",
@@ -19,7 +19,7 @@ export const Statistics = () => {
     },
     {
       quantity: "24/7",
-      description: "Suporte",
+      description: "Suporte humanizado",
     },
   ];
 
@@ -31,7 +31,7 @@ export const Statistics = () => {
             key={description}
             className="space-y-2 text-center"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold ">{quantity}</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold">{quantity}</h2>
             <p className="text-xl text-muted-foreground">{description}</p>
           </div>
         ))}

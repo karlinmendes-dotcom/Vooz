@@ -16,10 +16,10 @@ enum PopularPlanType {
 
 interface PricingProps {
   title: string;
-  subtitle: string;
   popular: PopularPlanType;
   monthlyPrice: number;
   implementationPrice: number;
+  freeTrial?: string;
   description: string;
   idealFor: string;
   buttonText: string;
@@ -29,13 +29,13 @@ interface PricingProps {
 const pricingList: PricingProps[] = [
   {
     title: "Essencial",
-    subtitle: "PLANO 1",
     popular: 0,
     monthlyPrice: 97,
     implementationPrice: 447,
+    freeTrial: "30 dias grátis",
     description: "Perfeito para profissionais e pequenos negócios que querem sair do agendamento manual e começar a organizar seus atendimentos de forma profissional.",
     idealFor: "Profissionais e pequenos negócios que querem organizar seus atendimentos",
-    buttonText: "Contratar Essencial",
+    buttonText: "Começar Grátis",
     benefitList: [
       "Sistema de agendamento online",
       "Página profissional de agendamento",
@@ -56,7 +56,6 @@ const pricingList: PricingProps[] = [
   },
   {
     title: "Profissional",
-    subtitle: "PLANO 2",
     popular: 1,
     monthlyPrice: 147,
     implementationPrice: 747,
@@ -65,12 +64,12 @@ const pricingList: PricingProps[] = [
     buttonText: "Contratar Profissional",
     benefitList: [
       "Tudo do Plano Essencial",
-      "CRM de clientes",
+      "CRM de clientes completo",
       "Histórico de clientes",
       "Organização do relacionamento com clientes",
       "Status dos clientes",
       "Automação de confirmações",
-      "Lembretes de agendamento",
+      "Lembretes de agendamento por WhatsApp",
       "Gestão mais completa da agenda",
       "Regras personalizadas do estabelecimento",
       "Página profissional mais completa",
@@ -84,29 +83,30 @@ const pricingList: PricingProps[] = [
   },
   {
     title: "Premium",
-    subtitle: "PLANO 3",
     popular: 0,
     monthlyPrice: 197,
     implementationPrice: 997,
     description: "Para negócios que querem uma solução digital completa, com automação, inteligência e maior controle da operação.",
     idealFor: "Negócios que querem solução completa com IA e automação avançada",
-    buttonText: "Contratar Premium",
+    buttonText: "Falar com Consultor",
     benefitList: [
       "Tudo do Plano Profissional",
       "Sistema completo de agendamento",
-      "CRM completo",
+      "CRM completo e avançado",
       "Histórico e relacionamento com clientes",
       "Automações avançadas",
       "Recursos inteligentes de atendimento",
       "Assistente de IA configurado para o negócio",
       "IA baseada nas informações e regras do negócio",
       "Automação de comunicação",
+      "Integração completa com WhatsApp",
+      "CRM conectado ao WhatsApp",
+      "Mensagens automáticas via WhatsApp",
       "Recursos avançados de retenção de clientes",
-      "Relatórios e indicadores",
+      "Relatórios e indicadores avançados",
       "Painel administrativo avançado",
       "Personalização avançada da plataforma",
       "Configurações específicas para o negócio",
-      "Integrações disponíveis conforme a estrutura",
       "Suporte prioritário",
       "Manutenção contínua",
       "Atualizações da plataforma",
@@ -128,13 +128,13 @@ export const Pricing = () => {
             Plano Ideal
           </span>
         </h2>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto px-4">
           Escolha a solução ideal para transformar seu atendimento em uma experiência mais profissional, organizada e inteligente.
         </p>
       </div>
 
       {/* Pricing Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
         {pricingList.map((pricing: PricingProps) => (
           <Card
             key={pricing.title}
@@ -154,10 +154,14 @@ export const Pricing = () => {
             )}
 
             <CardHeader className="text-center pt-8">
-              <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                {pricing.subtitle}
-              </p>
-              <CardTitle className="text-2xl mt-2">{pricing.title}</CardTitle>
+              <CardTitle className="text-2xl">{pricing.title}</CardTitle>
+
+              {/* Free Trial Badge */}
+              {pricing.freeTrial && (
+                <Badge variant="secondary" className="mx-auto mt-2 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                  {pricing.freeTrial}
+                </Badge>
+              )}
 
               {/* Monthly Price */}
               <div className="mt-4">
@@ -220,16 +224,16 @@ export const Pricing = () => {
       </div>
 
       {/* Bottom Note */}
-      <div className="text-center mt-12 space-y-2">
+      <div className="text-center mt-12 space-y-2 px-4">
         <p className="text-sm text-muted-foreground">
           <strong>Implementação</strong> = pagamento único &nbsp;|&nbsp;
           <strong>Mensalidade</strong> = pagamento recorrente
         </p>
         <p className="text-sm text-muted-foreground">
-          Todos os planos incluem hospedagem, manutenção e suporte.
+          Plano Essencial com <strong>30 dias grátis</strong>. Cancele quando quiser.
         </p>
         <p className="text-sm text-muted-foreground">
-          Integrações e recursos de terceiros sujeitos à disponibilidade e configuração.
+          Integrações com WhatsApp e IA disponíveis no Plano Premium.
         </p>
       </div>
     </section>

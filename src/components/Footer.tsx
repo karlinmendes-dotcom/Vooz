@@ -17,8 +17,9 @@ export const Footer = () => {
               Vooz
             </span>
           </a>
-          <p className="text-muted-foreground mt-4">
+          <p className="text-muted-foreground mt-4 max-w-xs">
             Soluções digitais para negócios que trabalham com agendamento.
+            Chega de perder clientes por falta de organização.
           </p>
         </div>
 
@@ -149,7 +150,7 @@ export const Footer = () => {
 
       <section className="container pb-14 text-center">
         <h3>
-          &copy; 2024{" "}
+          &copy; 2025{" "}
           <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text font-bold">
             Vooz
           </span>
