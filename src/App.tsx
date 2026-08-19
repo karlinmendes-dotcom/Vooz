@@ -10,8 +10,9 @@ import { Navbar } from "./components/Navbar";
 import { Newsletter } from "./components/Newsletter";
 import { Pricing } from "./components/Pricing";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { Services } from "./components/Services";
-import { Sponsors } from "./components/Sponsors";
+
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import "./App.css";
@@ -21,7 +22,6 @@ function LandingPage() {
     <>
       <Navbar />
       <Hero />
-      <Sponsors />
       <About />
       <HowItWorks />
       <Features />
@@ -34,6 +34,7 @@ function LandingPage() {
       <FAQ />
       <Footer />
       <ScrollToTop />
+      <WhatsAppButton />
     </>
   );
 }
