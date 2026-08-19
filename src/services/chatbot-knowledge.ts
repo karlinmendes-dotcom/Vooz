@@ -1,72 +1,33 @@
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
-export const CHATBOT_NAME = "Vooz";
-
 export const SYSTEM_PROMPT = `
-Você é o assistente virtual da Vooz, uma empresa de tecnologia especializada em criar soluções digitais para pequenos negócios que trabalham com agendamento.
+Você é o assistente da Vooz. Fale como uma pessoa real, simpática e direta.
 
-REGRAS OBRIGATÓRIAS:
-1. Você SÓ fala sobre a Vooz e seus serviços. Nunca responda sobre outros assuntos.
-2. Seja simpático, profissional e direto.
-3. Responda em português brasileiro.
-4. Nunca invente informações. Se não souber, diga que vai encaminhar para o time.
-5. Sempre tente guiar o cliente para contratar um plano ou falar com o time pelo WhatsApp.
-6. Não fale de tecnologia, programação, frameworks ou coisas técnicas.
-7. Fale como se estivesse conversando com o dono de um negócio local.
-8. Seja breve e direto nas respostas.
+REGRAS:
+- Respostas curtas (máximo 3-4 frases)
+- Fale como se fosse um amigo explicando
+- Use linguagem simples, sem formalidade excessiva
+- Emojis com moderação (1-2 por mensagem)
+- Nunca fale de tecnologia, programação ou coisas técnicas
+- Seja empático, entenda a dor do cliente
+- Sempre ofereça ajuda concreta
+- Se não souber algo, encaminhe para o WhatsApp
 
 SOBRE A VOZZ:
-- Somos uma empresa que ajuda pequenos negócios a organizar seus atendimentos
-- Focamos em barbearias, salões de beleza, clínicas de estética, studios, nail designers, lash designers, tatuadores e profissionais autônomos
-- Nossa solução inclui: agendamento online, CRM, lembretes, painel administrativo e automações
+Ajudamos barbearias, salões, clínicas, studios a organizar agendamentos e clientes. O cliente não perde mais tempo respondendo WhatsApp, o sistema faz tudo.
 
-PLANOS:
-1. ESSENCIAL - R$97/mês + R$447 de implementação (pagamento único)
-   - Sistema de agendamento online
-   - Página profissional
-   - Cadastro de serviços e horários
-   - Gestão de clientes
-   - Painel administrativo básico
-   - Suporte básico
-   - 30 dias grátis
+PLANOS (preços exatos):
+- Essencial: R$97/mês + R$447 implementação (30 dias grátis)
+- Profissional: R$147/mês + R$747 implementação
+- Premium: R$197/mês + R$997 implementação
 
-2. PROFISSIONAL - R$147/mês + R$747 de implementação (pagamento único)
-   - Tudo do Essencial
-   - CRM completo
-   - Histórico de clientes
-   - Automação de confirmações
-   - Lembretes por WhatsApp
-   - Relatórios básicos
-   - Suporte prioritário
-
-3. PREMIUM - R$197/mês + R$997 de implementação (pagamento único)
-   - Tudo do Profissional
-   - CRM completo e avançado
-   - Integração completa com WhatsApp
-   - IA configurada para o negócio
-   - Automações avançadas
-   - Relatórios e indicadores
-   - Suporte prioritário
-
-PROCESSO:
-1. Cliente entra em contato
-2. Entendemos o negócio
-3. Configuramos tudo (identidade visual, serviços, horários)
-4. Cliente começa a receber agendamentos
-5. Suporte contínuo
-
-CONTATO:
-- WhatsApp: (27) 99804-1197
-- Site: vooz.vercel.app
+CONTATO: WhatsApp (27) 99804-1197
 `;
 
-export const WELCOME_MESSAGE = `Olá! 👋 Sou o assistente da Vooz.
+export const WELCOME_MESSAGE = `Oi! 👋 Tudo bem?
 
-Posso te ajudar a entender como funciona nosso sistema de agendamento para o seu negócio.
+Sou da Vooz. Me conta, o que você precisa?`;
 
-O que você gostaria de saber?`;
-
-// Envia mensagem para a API do Groq com Llama
 export async function sendMessageToAI(userMessage: string, conversationHistory: Array<{role: string; content: string}>): Promise<string> {
   if (!GROQ_API_KEY) {
     return generateLocalResponse(userMessage);
@@ -83,120 +44,85 @@ export async function sendMessageToAI(userMessage: string, conversationHistory: 
         model: "llama-3.1-8b-instant",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          ...conversationHistory,
+          ...conversationHistory.slice(-10),
           { role: "user", content: userMessage },
         ],
         temperature: 0.7,
-        max_tokens: 500,
+        max_tokens: 200,
       }),
     });
 
     if (!response.ok) {
-      console.error("Groq API error:", response.status);
       return generateLocalResponse(userMessage);
     }
 
     const data = await response.json();
     return data.choices?.[0]?.message?.content || generateLocalResponse(userMessage);
-  } catch (error) {
-    console.error("Error calling Groq API:", error);
+  } catch {
     return generateLocalResponse(userMessage);
   }
 }
 
-// Resposta local (fallback quando não tem API)
 function generateLocalResponse(userMessage: string): string {
-  const message = userMessage.toLowerCase();
+  const msg = userMessage.toLowerCase();
 
-  if (message.match(/^(oi|olá|ola|bom dia|boa tarde|boa noite|hello|hi)/)) {
-    return `Olá! 👋 Bem-vindo à Vooz! 
+  if (msg.match(/^(oi|olá|ola|bom dia|boa tarde|boa noite|hello|hi)/)) {
+    return `Oi! 👋 Tudo bem?
 
-Posso te ajudar a entender como nosso sistema de agendamento pode transformar seu negócio. 
-
-O que você gostaria de saber?`;
+Me conta, o que você precisa?`;
   }
 
-  if (message.includes("preço") || message.includes("preco") || message.includes("quanto") || message.includes("valor") || message.includes("plano") || message.includes("mensal")) {
-    return `Temos 3 planos:
+  if (msg.includes("preço") || msg.includes("preco") || msg.includes("quanto") || msg.includes("valor") || msg.includes("plano") || msg.includes("mensal")) {
+    return `Temos 3 opções:
 
-🟢 **Essencial** - R$97/mês + R$447 implementação
-   → Agendamento online, gestão de clientes, painel básico
+🟢 Essencial — R$97/mês + R$447 pra começar
+🔵 Profissional — R$147/mês + R$747
+🟣 Premium — R$197/mês + R$997
 
-🔵 **Profissional** - R$147/mês + R$747 implementação
-   → Tudo do Essencial + CRM, lembretes WhatsApp, relatórios
-
-🟣 **Premium** - R$197/mês + R$997 implementação
-   → Tudo + IA, automações avançadas, WhatsApp integrado
-
-Todos têm 30 dias grátis no plano Essencial! 
-
-Quer saber mais sobre algum plano específico?`;
+O Essencial tem 30 dias grátis! Quer saber mais de algum?`;
   }
 
-  if (message.includes("como funciona") || message.includes("funciona") || message.includes("processo")) {
-    return `É muito simples:
+  if (msg.includes("como funciona") || msg.includes("funciona") || msg.includes("processo")) {
+    return `Bem simples:
 
-1️⃣ Você fala com a gente
-2️⃣ Configuramos tudo para seu negócio
-3️⃣ Seus clientes começam a agendar pelo celular
-4️⃣ Você gerencia tudo em um painel fácil
+A gente configura tudo pra você. Seus clientes agendam pelo celular e você gerencia tudo num painel fácil.
 
-Sem complicação, sem programação. A gente faz tudo para você! 🚀`;
+Sem complicação, sem programação. 😊`;
   }
 
-  if (message.includes("para quem") || message.includes("quem") || message.includes("barbearia") || message.includes("salão") || message.includes("salo") || message.includes("clínica") || message.includes("clinica") || message.includes("studio")) {
-    return `O Vooz é perfeito para:
+  if (msg.includes("para quem") || msg.includes("quem") || msg.includes("barbearia") || msg.includes("salão") || msg.includes("salo") || msg.includes("clínica") || msg.includes("clinica") || msg.includes("studio") || msg.includes("tatuador")) {
+    return `É pra barbearias, salões, clínicas, studios, tatuadores...
 
-✂️ Barbearias
-💇 Salões de beleza
-💅 Nail designers
-👁️ Lash designers
-💆 Clínicas de estética
-🖌️ Tatuadores
-🏋️ Studios
-🐶 Pet shops
-...e qualquer profissional que trabalha com agendamento!
+Qualquer negócio que trabalha com agendamento. 😊
 
-Seu negócio se encaixa? Me conta mais! 😊`;
+Seu negócio se encaixa?`;
   }
 
-  if (message.includes("whatsapp") || message.includes("contato") || message.includes("falar") || message.includes("conversar")) {
-    return `Claro! Você pode falar diretamente com nossa equipe:
+  if (msg.includes("whatsapp") || msg.includes("contato") || msg.includes("falar") || msg.includes("conversar")) {
+    return `Chama no WhatsApp: (27) 99804-1197
 
-📱 WhatsApp: (27) 99804-1197
-
-Eles vão te ajudar com tudo que precisar! 😊`;
+A gente te ajuda! 📱`;
   }
 
-  if (message.includes("cancelar") || message.includes("cancela")) {
-    return `Sim, pode cancelar quando quiser! 
-
-Sem multa, sem taxa. Seus dados ficam disponíveis por 30 dias após o cancelamento.
-
-Mas espero que não precise cancelar! 😊`;
+  if (msg.includes("cancelar") || msg.includes("cancela")) {
+    return `Pode cancelar quando quiser, sem multa. 😊`;
   }
 
-  if (message.includes("teste") || message.includes("grátis") || message.includes("gratis") || message.includes("demonstração") || message.includes("demonstracao") || message.includes("testar")) {
-    return `Ótimo! O plano Essencial tem 30 dias grátis!
+  if (msg.includes("teste") || msg.includes("grátis") || msg.includes("gratis") || msg.includes("testar")) {
+    return `O Essencial tem 30 dias grátis! Sem cartão.
 
-Você pode testar sem compromisso, sem cartão de crédito.
-
-Quer começar agora? Fala com a gente pelo WhatsApp: (27) 99804-1197 🚀`;
+Quer testar? Chama no WhatsApp: (27) 99804-1197 🚀`;
   }
 
-  if (message.includes("obrigad") || message.includes("valeu") || message.includes("thanks")) {
-    return `De nada! 😊 Estou aqui se precisar de mais alguma coisa.
-
-Bons negócios! 🚀`;
+  if (msg.includes("obrigad") || msg.includes("valeu")) {
+    return `De nada! 😊 Tô aqui se precisar.`;
   }
 
-  if (message.includes("tchau") || message.includes("até") || message.includes("adeus")) {
-    return `Tchau! 👋 Foi bom conversar com você!
-
-Qualquer coisa, é só chamar. Bons negócios! 🚀`;
+  if (msg.includes("tchau") || msg.includes("até")) {
+    return `Tchau! 👋 Bons negócios!`;
   }
 
-  return `Desculpa, não tenho essa informação. Mas posso te ajudar com tudo sobre nossos planos e serviços.
+  return `Hmm, não tenho essa info. Mas posso te ajudar com preços, planos ou como funciona.
 
-Quer saber nossos preços ou como funciona? Ou prefere falar direto com nossa equipe pelo WhatsApp?`;
+Ou me chama no WhatsApp: (27) 99804-1197 😊`;
 }

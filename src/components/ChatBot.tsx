@@ -64,7 +64,7 @@ export const ChatBot = () => {
     } catch {
       const errorMessage: Message = {
         id: Date.now() + 1,
-        text: "Desculpa, tive um problema técnico. Tente novamente ou fale com nossa equipe pelo WhatsApp!",
+        text: "Ops! Deu um probleminha aqui. Me chama no WhatsApp que eu te ajudo! 📱",
         isUser: false,
         timestamp: new Date(),
       };
@@ -83,11 +83,11 @@ export const ChatBot = () => {
 
   return (
     <div className="fixed bottom-6 left-6 z-50">
-      {/* Botão de abrir/fechar */}
+      {/* Botão estrelinha */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110"
-        aria-label="Chat com assistente virtual"
+        className="bg-gradient-to-br from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
+        aria-label="Falar com assistente"
       >
         {isOpen ? (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -95,50 +95,68 @@ export const ChatBot = () => {
             <path d="m6 6 12 12" />
           </svg>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l2.09 6.26L20.18 9l-4.73 3.64L16.82 19 12 15.77 7.18 19l1.37-6.36L3.82 9l6.09-.74z" />
           </svg>
         )}
       </button>
 
       {/* Janela do chat */}
       {isOpen && (
-        <div className="absolute bottom-16 left-0 w-[300px] sm:w-[340px] bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="absolute bottom-16 left-0 w-[310px] sm:w-[350px] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
           {/* Header */}
-          <div className="bg-indigo-600 text-white p-3">
+          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
-                <span className="text-lg font-bold">V</span>
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l2.09 6.26L20.18 9l-4.73 3.64L16.82 19 12 15.77 7.18 19l1.37-6.36L3.82 9l6.09-.74z" />
+                </svg>
               </div>
               <div>
-                <h3 className="font-bold text-sm">Assistente Vooz</h3>
+                <h3 className="font-bold text-sm">Vooz</h3>
                 <p className="text-xs text-indigo-200">Online agora</p>
               </div>
             </div>
           </div>
 
           {/* Mensagens */}
-          <div className="h-[280px] overflow-y-auto p-3 space-y-3">
+          <div className="h-[300px] overflow-y-auto p-4 space-y-3">
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
               >
+                {!message.isUser && (
+                  <div className="w-6 h-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                      <path d="M12 2l2.09 6.26L20.18 9l-4.73 3.64L16.82 19 12 15.77 7.18 19l1.37-6.36L3.82 9l6.09-.74z" />
+                    </svg>
+                  </div>
+                )}
                 <div
-                  className={`max-w-[85%] p-2.5 rounded-lg text-sm ${
+                  className={`max-w-[80%] px-4 py-2.5 rounded-2xl text-sm ${
                     message.isUser
-                      ? "bg-indigo-600 text-white rounded-br-none"
-                      : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-none"
+                      ? "bg-indigo-600 text-white rounded-br-md"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-md"
                   }`}
                 >
-                  <p className="whitespace-pre-line text-xs sm:text-sm">{message.text}</p>
+                  <p className="whitespace-pre-line leading-relaxed">{message.text}</p>
                 </div>
               </div>
             ))}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 dark:bg-gray-800 p-2.5 rounded-lg rounded-bl-none">
-                  <p className="text-xs text-gray-500 animate-pulse">digitando...</p>
+                <div className="w-6 h-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                    <path d="M12 2l2.09 6.26L20.18 9l-4.73 3.64L16.82 19 12 15.77 7.18 19l1.37-6.36L3.82 9l6.09-.74z" />
+                  </svg>
+                </div>
+                <div className="bg-gray-100 dark:bg-gray-800 px-4 py-2.5 rounded-2xl rounded-bl-md">
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
+                  </div>
                 </div>
               </div>
             )}
@@ -146,23 +164,23 @@ export const ChatBot = () => {
           </div>
 
           {/* Input */}
-          <div className="p-3 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-850">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Digite sua mensagem..."
+                placeholder="Pergunte algo..."
                 disabled={isTyping}
-                className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white disabled:opacity-50"
+                className="flex-1 px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white disabled:opacity-50 placeholder-gray-400"
               />
               <button
                 onClick={handleSend}
                 disabled={!inputValue.trim() || isTyping}
-                className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-600 text-white px-3 py-2 rounded-lg transition-colors"
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 disabled:from-gray-300 disabled:to-gray-400 dark:disabled:from-gray-600 dark:disabled:to-gray-700 text-white px-4 py-2.5 rounded-xl transition-all"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m22 2-7 20-4-9-9-4Z" />
                   <path d="M22 2 11 13" />
                 </svg>
