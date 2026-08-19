@@ -13,6 +13,7 @@ import { Services } from "./components/Services";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { ChatBot } from "./components/ChatBot";
 import "./App.css";
 
 function LandingPage() {
@@ -31,6 +32,7 @@ function LandingPage() {
       <Newsletter />
       <FAQ />
       <Footer />
+      <ChatBot />
       <WhatsAppButton />
     </>
   );
